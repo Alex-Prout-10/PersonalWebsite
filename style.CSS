@@ -1,0 +1,310 @@
+/* --- 1. GLOBAL RESET & FONT --- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* --- 2. THE PAGE BACKGROUND --- */
+body {
+  font-family: "Poppins", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  color: white;
+  background: linear-gradient(135deg, #5b12a6 0%, #001df8 70%, #0e022c 100%);
+  background-attachment: fixed;
+  background-size: cover;
+  display: block;
+  overflow-x: hidden;
+}
+
+h1, h2, h3, p {
+  color: white;
+}
+
+a {
+  color: white;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #03a9f4;
+}
+
+/* --- 3. THE GLASS CONTAINER --- */
+.glass-container {
+  width: 90%;
+  max-width: 1200px;
+  height: 700px;
+  background: rgba(255, 244, 244, 0.05);
+  backdrop-filter: blur(30px);
+  -webkit-backdrop-filter: blur(20px);
+  border-radius: 30px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  box-shadow: 0 15px 35px rgba(247, 247, 247, 0.3);
+  position: relative;
+}
+
+.glass-container::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100px;
+  background: repeating-linear-gradient(
+    to right,
+    rgba(255, 255, 255, 0.03) 0px,
+    rgba(255, 255, 255, 0.03) 1px,
+    transparent 1px,
+    transparent 50px
+  );
+  z-index: -1;
+}
+
+/* --- 4. SECTION & HEADER LAYOUT --- */
+section {
+    width: 100%;
+    min-height: 100vh;
+    padding: 120px 10%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center; /* Changed to center so the glass box is in the middle */
+}
+
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 20px 60px;
+    background: rgba(72, 197, 255, 0.8);
+    backdrop-filter: blur(10px);
+    z-index: 1000;
+}
+
+nav {
+  display: flex;
+  justify-content: space-between; 
+  align-items: center;
+  width: 100%;
+}
+
+nav h2 {
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 40px;
+}
+
+nav ul li a {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  font-weight: 500;
+  letter-spacing: 1px;
+  transition: 0.3s ease;
+}
+
+nav ul li a:hover {
+  color: white;
+}
+
+/* --- 5. HERO CONTENT LAYOUT --- */
+.hero-content {
+  display: flex;
+  flex: 1;
+  padding: 60px 80px;
+}
+
+.hero-photo {
+  flex: 40;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  perspective: 1000px; /* ADD THIS LINE: Enables true 3D depth */
+}
+
+.hero-text {
+  flex: 60;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.hero-text h1 {
+  font-size: 4rem;
+  font-weight: 700;
+  margin-bottom: 5px;
+  line-height: 1.1;
+}
+
+.hero-text h2 {
+  font-size: 2rem;
+  font-weight: 600;
+  margin-bottom: 25px;
+  background: linear-gradient(to right, #9c27b0, #160533, #46acff);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.hero-text p {
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.7);
+  line-height: 1.7;
+  max-width: 500px;
+  margin-bottom: 40px;
+}
+
+.btn-contact {
+  display: inline-block;
+  padding: 12px 40px;
+  color: white;
+  font-size: 0.9rem;
+  font-weight: 500;
+  border-radius: 50px;
+  background: linear-gradient(135deg, #ec407a, #03a9f4);
+  box-shadow: 0 8px 15px rgba(3, 169, 244, 0.2);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.btn-contact:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(3, 169, 244, 0.3);
+  color: white; /* Keeps text white on hover */
+}
+
+.hero-photo {
+  flex: 40;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.hero-photo img {
+  max-width: 90%;
+  max-height: 110%;
+  border-radius: 30px;
+  object-fit: contain;
+}
+
+.social-icons{
+  display: flex;
+  gap: 25px;
+  margin-top: 20px;
+}
+
+.social-icons a {
+  font-size: 2rem;
+  color: aliceblue;
+  transition: color 0.3s ease, transform 0.4s ease;
+}
+
+.social-icons a:hover {
+   color: aquamarine;
+   transform: translateY(-5px) scale(1.2);
+}
+
+/* --- DYNAMIC PROJECT GRID --- */
+.project-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+  width: 100%;
+  margin-top: 30px;
+  padding: 0 20px;
+}
+
+.project-card {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 20px;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Elevate card slightly on hover */
+.project-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 15px 30px rgba(3, 169, 244, 0.2);
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.project-image-wrapper {
+  width: 100%;
+  height: 180px;
+  overflow: hidden;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.project-image-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.project-info {
+  padding: 25px;
+  text-align: left;
+}
+
+.project-info p {
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.7);
+  margin: 12px 0 20px 0;
+  line-height: 1.6;
+}
+
+/* Tech Stack Pill Tags */
+.project-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 25px;
+}
+
+.project-tags span {
+  font-size: 0.7rem;
+  background: rgba(3, 169, 244, 0.15);
+  color: #03a9f4;
+  padding: 4px 12px;
+  border-radius: 50px;
+  font-weight: 500;
+  text-transform: uppercase;
+}
+
+/* Action Buttons */
+.project-links {
+  display: flex;
+  gap: 15px;
+}
+
+.btn-project {
+  flex: 1;
+  text-align: center;
+  padding: 10px 0;
+  font-size: 0.85rem;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: all 0.3s ease;
+}
+
+.btn-project:hover {
+  background: white;
+  color: #1c0338; /* Flips color profile for clear interactive state */
+}
